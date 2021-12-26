@@ -6,24 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FASHION SHOP</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script> <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="products.css">
+    <link rel="stylesheet" href="product.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
-    <script>
-        
-    </script>
+    <link rel="icon" href="/img/favicon.ico">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
     <div id="header" class="header">
-        <div class="header__hotline hide-on-mobile">
+        <div class="header__hotline hide-on-mobile" data-ride="carousel" data-aos="slide-down" data-aos-delay="100" data-aos-duration="1000">
             <div class="header__hotline-shop"><i class="fas fa-home"></i>Shop system</div>
             <div class="header__hotline-shop header__hotline-shop-button"><input type="button" value="Menu" id="input_menu"></div>
             <div class="header__hotline-shop header__hotline-shop2"><i class="fas fa-phone"></i>Hotline: 0327205204</div>
         </div>
 
         <div class="header__list">
-            <div class="header__list__logo font-size-on-mobile"><a href="">Hoai Linh</a></div>
-            <div class="header__list__item">
-                <div class="header__list__item-item hide-on-mobile"><a href="">Home Page</a></div>
+            <div class="header__list__logo font-size-on-mobile" ><a href="">Hoai Linh</a></div>
+            <div class="header__list__item" >
+                <div class="header__list__item-item hide-on-mobile" ><a href="">Home Page</a></div>
 
                 <div class="header__list__item-item header__list__item-item-products hide-on-mobile">
                     <a href="">Product <i class="fas fa-angle-down"></i></a>
@@ -247,12 +246,38 @@
                     <a href=""><i class="far fa-user-circle"></i>Account</a>
 
                     <div id="account__list" class="header__list__item-item-account-list">
-                        <a href=""><div class="header__list__item-item-account-list-item"><i class="fas fa-user-alt"></i> Log in </div></a>
-                        <a href=""><div class="header__list__item-item-account-list-item"><i class="fas fa-user-check"></i> sign up</div></a>
+                        <a href="/Products/product__login/login.html"><div class="header__list__item-item-account-list-item"><i class="fas fa-user-alt"></i> Log in </div></a>
+                        <a href="/Products/product__login/login.html"><div class="header__list__item-item-account-list-item"><i class="fas fa-user-check"></i> sign up</div></a>
                     </div>
 
                 </div>
-                <div class="header__list__item-item"><a href=""><i class="fas fa-shopping-cart"></i>Cart</a></div>
+                <div class="header__list__item-item header__list__item-item-cart">
+                    <a href=""><i class="fas fa-shopping-cart"></i>Cart</a>
+                    <div class="header__list__item-item-cart-group">
+                        <div class="header__list__item-item-cart-group-mycart"><p>Your cart</p></div>
+                        <div class="header__list__item-item-cart-group-list">
+                            <div class="header__list__item-item-cart-group-list-profile">
+                                <div class="header__list__item-item-cart-group-list-profile-smail">
+                                    <div class="header__list__item-item-cart-group-list-profile-smail-item header__list__item-item-cart-group-list-profile-smail-top">Image</div>
+                                    <div class="header__list__item-item-cart-group-list-profile-smail-item">Product's name</div>
+                                    <div class="header__list__item-item-cart-group-list-profile-smail-item">Unit price</div>
+                                    <div class="header__list__item-item-cart-group-list-profile-smail-item">Quantily</div>
+                                    <div class="header__list__item-item-cart-group-list-profile-smail-item">Into money</div>
+                                </div>
+
+                            </div>
+
+                            <div id="cart" class="header__list__item-item-cart-group-list-scroll"></div>
+                            <div id="cart" class="header__list__item-item-cart-group-list-sum">
+                                <p>Total money:</p>
+                                <p id="sum__money"></p>
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+                
             </div>
         </div>
     </div>
@@ -261,8 +286,8 @@
     <div class="container">
 
         <!-- slider -->
-        <div id="container__top" class="container__top">
-            <div id="carouselId" class="carousel slide myslide myslide-mobile" data-ride="carousel">
+        <div id="container__top" class="container__top" >
+            <div id="carouselId" class="carousel slide myslide myslide-mobile" data-ride="carousel" data-aos="slide-up" data-aos-delay="100" data-aos-duration="1000">
                 <ol class="carousel-indicators">
                     <li data-target="#carouselId" data-slide-to="0" class="active"></li>
                     <li data-target="#carouselId" data-slide-to="1"></li>
@@ -270,13 +295,13 @@
                 </ol>
                 <div class="carousel-inner" role="listbox">
                     <div class="carousel-item active">
-                       <img src="slide__img1.jpg" alt="">
+                       <img src="/img/slide__img1.jpg" alt="">
                     </div>
                     <div class="carousel-item">
-                        <img src="1-0.jpg" alt="">
+                        <img src="/img/1-0.jpg" alt="">
                     </div>
                     <div class="carousel-item">
-                        <img src="1-0000.jpg" alt="">
+                        <img src="/img/1-0000.jpg" alt="">
                     </div>
                     
                 </div>
@@ -313,15 +338,15 @@
                     <i class="fab fa-facebook-messenger"></i>
                 </div>
             </a>
-
+            
         </div>
 
 
         <!-- container__tops -->
         <div class="container__tops tops-mobile">
-            <div class="container__tops-group tops-group-mobile">
+            <div class="container__tops-group tops-group-mobile" data-aos="flip-left" data-aos-delay="100" data-aos-duration="1500">
                 <div class="container__tops-groups">
-                    <a href=""><div class="container__tops-group-img"></div></a>
+                    <a href="/Products/product__con/product__con.html"><div class="container__tops-group-img"></div></a>
                 </div>
                 <a href="">
                     <div class="container__tops-group-text">
@@ -330,9 +355,9 @@
                     </div>
                 </a>
             </div>
-            <div class="container__tops-group container__tops-group-right tops-group-mobile">
+            <div class="container__tops-group container__tops-group-right tops-group-mobile" data-aos="flip-right" data-aos-delay="100" data-aos-duration="1500">
                 <div class="container__tops-groups">
-                    <a href=""><div class="container__tops-group-right-img"></div></a>
+                    <a href="/Products/product__con/product__con.html"><div class="container__tops-group-right-img"></div></a>
                 </div>
                 <a href="">
                     <div class="container__tops-group-text">
@@ -350,9 +375,9 @@
         <!-- shop now img-->
 
 
-        <div class="container__shop hide-on-mobile">
-            <a href="">
-                <div class="container__shop-group">
+        <div class="container__shop hide-on-mobile" data-aos="fade-down" data-aos-delay="300" data-aos-duration="1000">
+            <a href="/Products/product__con/product__con.html">
+                <div class="container__shop-group" >
                     <span></span><span></span><span></span><span></span>
                 </div>
             </a>
@@ -367,16 +392,16 @@
         <!-- products -->
 
         <div class="container__product product-top tops-group-mobile">
-            <div class="container__product-h1">New product</div>
+            <div class="container__product-h1" data-aos="fade-down" data-aos-delay="100" data-aos-duration="1000">New product</div>
             <div class="container__product-group width-mobile">
                         <!-- 1 -->
-                <div class="container__product-group-item width-mobile">
+                <div class="container__product-group-item width-mobile"  data-aos="flip-up" data-aos-delay="100" data-aos-duration="1500">
                     <div class="container__product-group-item-img margina-mobile">
                         <div class="container__product-group-item-img-hover ">
                             <div class="container__product-group-item-img-hover-list">
-                                <div class="container__product-group-item-img-hover-list-item"><i class="fas fa-heart"></i></div>
-                                <div class="container__product-group-item-img-hover-list-item"><i class="fas fa-shopping-cart"></i></div>
-                                <div class="container__product-group-item-img-hover-list-item"><i class="far fa-eye"></i></div>
+                                <div class="container__product-group-item-img-hover-list-item"><i class="fas fa-heart heart__red"></i></div>
+                                <div class="container__product-group-item-img-hover-list-item"><i class="fas fa-shopping-cart add__cart"></i></div>
+                               <a href=""><div class="container__product-group-item-img-hover-list-item"><i class="far fa-eye"></i></div></a>
                             </div>
                             <a href=""><button>Advise</button></a>
                         </div>
@@ -394,13 +419,13 @@
                     </div>
                 </div>
                          <!-- 2 -->
-                <div class="container__product-group-item hide-on-mobile">
+                <div class="container__product-group-item hide-on-mobile" data-aos="flip-left" data-aos-delay="100" data-aos-duration="1500">
                     <div class="container__product-group-item-img container__product-group-item-img2">
                         <div class="container__product-group-item-img-hover">
                             <div class="container__product-group-item-img-hover-list">
-                                <div class="container__product-group-item-img-hover-list-item"><i class="fas fa-heart"></i></div>
-                                <div class="container__product-group-item-img-hover-list-item"><i class="fas fa-shopping-cart"></i></div>
-                                <div class="container__product-group-item-img-hover-list-item"><i class="far fa-eye"></i></div>
+                                <div class="container__product-group-item-img-hover-list-item"><i class="fas fa-heart heart__red2"></i></div>
+                                <div class="container__product-group-item-img-hover-list-item"><i class="fas fa-shopping-cart add__cart2"></i></div>
+                               <a href=""><div class="container__product-group-item-img-hover-list-item"><i class="far fa-eye"></i></div></a>
                             </div>
                             <a href=""><button>Advise</button></a>
                         </div>
@@ -418,13 +443,13 @@
                     </div>
                 </div>
                          <!-- 3 -->
-                <div class="container__product-group-item hide-on-mobile">
+                <div class="container__product-group-item hide-on-mobile" data-aos="flip-down" data-aos-delay="100" data-aos-duration="1500">
                     <div class="container__product-group-item-img container__product-group-item-img3">
                         <div class="container__product-group-item-img-hover">
                             <div class="container__product-group-item-img-hover-list">
-                                <div class="container__product-group-item-img-hover-list-item"><i class="fas fa-heart"></i></div>
-                                <div class="container__product-group-item-img-hover-list-item"><i class="fas fa-shopping-cart"></i></div>
-                                <div class="container__product-group-item-img-hover-list-item"><i class="far fa-eye"></i></div>
+                                <div class="container__product-group-item-img-hover-list-item"><i class="fas fa-heart heart__red3"></i></div>
+                                <div class="container__product-group-item-img-hover-list-item"><i class="fas fa-shopping-cart add__cart3"></i></div>
+                               <a href=""><div class="container__product-group-item-img-hover-list-item"><i class="far fa-eye"></i></div></a>
                             </div>
                             <a href=""><button>Advise</button></a>
                         </div>
@@ -442,13 +467,13 @@
                     </div>
                 </div>
                              <!-- 4 -->
-                <div class="container__product-group-item hide-on-mobile">
+                <div class="container__product-group-item hide-on-mobile" data-aos="flip-right" data-aos-delay="100" data-aos-duration="1500">
                     <div class="container__product-group-item-img container__product-group-item-img4">
                         <div class="container__product-group-item-img-hover">
                             <div class="container__product-group-item-img-hover-list">
-                                <div class="container__product-group-item-img-hover-list-item"><i class="fas fa-heart"></i></div>
-                                <div class="container__product-group-item-img-hover-list-item"><i class="fas fa-shopping-cart"></i></div>
-                                <div class="container__product-group-item-img-hover-list-item"><i class="far fa-eye"></i></div>
+                                <div class="container__product-group-item-img-hover-list-item"><i class="fas fa-heart heart__red4"></i></div>
+                                <div class="container__product-group-item-img-hover-list-item"><i class="fas fa-shopping-cart add__cart4"></i></div>
+                               <a href=""><div class="container__product-group-item-img-hover-list-item"><i class="far fa-eye"></i></div></a>
                             </div>
                             <a href=""><button>Advise</button></a>
                         </div>
@@ -473,7 +498,7 @@
 
 
         <div class="container__sale product-top">
-            <div class="container__sale-img">
+            <div class="container__sale-img" data-aos="slide-up" data-aos-delay="100" data-aos-duration="1500">
                 <div class="container__sale-img-people"></div>
 
 
@@ -507,16 +532,16 @@
         <!-- Hot products -->
 
         <div class="container__product container__products">
-            <div class="container__product-h1">Hot product</div>
+            <div class="container__product-h1" data-aos="fade-left" data-aos-delay="100" data-aos-duration="1500">Hot product</div>
             <div class="container__product-group">
                         <!-- 1 -->
-                <div class="container__product-group-item">
+                <div class="container__product-group-item" data-aos="flip-up" data-aos-delay="100" data-aos-duration="1500">
                     <div class="container__product-group-item-img container__product-group-item-imgs1">
                         <div class="container__product-group-item-img-hover">
                             <div class="container__product-group-item-img-hover-list">
                                 <div class="container__product-group-item-img-hover-list-item"><i class="fas fa-heart"></i></div>
-                                <div class="container__product-group-item-img-hover-list-item"><i class="fas fa-shopping-cart"></i></div>
-                                <div class="container__product-group-item-img-hover-list-item"><i class="far fa-eye"></i></div>
+                                <div class="container__product-group-item-img-hover-list-item"><i class="fas fa-shopping-cart add__cart5"></i></div>
+                               <a href=""><div class="container__product-group-item-img-hover-list-item"><i class="far fa-eye"></i></div></a>
                             </div>
                             <button>Advise</button>
                         </div>
@@ -534,13 +559,13 @@
                     </div>
                 </div>
                          <!-- 2 -->
-                <div class="container__product-group-item">
+                <div class="container__product-group-item" data-aos="flip-left" data-aos-delay="100" data-aos-duration="1500">
                     <div class="container__product-group-item-img container__product-group-item-img2 container__product-group-item-imgs2">
                         <div class="container__product-group-item-img-hover">
                             <div class="container__product-group-item-img-hover-list">
                                 <div class="container__product-group-item-img-hover-list-item"><i class="fas fa-heart"></i></div>
-                                <div class="container__product-group-item-img-hover-list-item"><i class="fas fa-shopping-cart"></i></div>
-                                <div class="container__product-group-item-img-hover-list-item"><i class="far fa-eye"></i></div>
+                                <div class="container__product-group-item-img-hover-list-item"><i class="fas fa-shopping-cart add__cart6"></i></div>
+                               <a href=""><div class="container__product-group-item-img-hover-list-item"><i class="far fa-eye"></i></div></a>
                             </div>
                             <button>Advise</button>
                         </div>
@@ -558,13 +583,13 @@
                     </div>
                 </div>
                          <!-- 3 -->
-                <div class="container__product-group-item">
+                <div class="container__product-group-item" data-aos="flip-down" data-aos-delay="100" data-aos-duration="1500">
                     <div class="container__product-group-item-img container__product-group-item-img3 container__product-group-item-imgs3">
                         <div class="container__product-group-item-img-hover">
                             <div class="container__product-group-item-img-hover-list">
                                 <div class="container__product-group-item-img-hover-list-item"><i class="fas fa-heart"></i></div>
-                                <div class="container__product-group-item-img-hover-list-item"><i class="fas fa-shopping-cart"></i></div>
-                                <div class="container__product-group-item-img-hover-list-item"><i class="far fa-eye"></i></div>
+                                <div class="container__product-group-item-img-hover-list-item"><i class="fas fa-shopping-cart add__cart7"></i></div>
+                               <a href=""><div class="container__product-group-item-img-hover-list-item"><i class="far fa-eye"></i></div></a>
                             </div>
                             <button>Advise</button>
                         </div>
@@ -582,13 +607,13 @@
                     </div>
                 </div>
                              <!-- 4 -->
-                <div class="container__product-group-item">
+                <div class="container__product-group-item" data-aos="flip-right" data-aos-delay="100" data-aos-duration="1500">
                     <div class="container__product-group-item-img container__product-group-item-img4 container__product-group-item-imgs4">
                         <div class="container__product-group-item-img-hover">
                             <div class="container__product-group-item-img-hover-list">
                                 <div class="container__product-group-item-img-hover-list-item"><i class="fas fa-heart"></i></div>
-                                <div class="container__product-group-item-img-hover-list-item"><i class="fas fa-shopping-cart"></i></div>
-                                <div class="container__product-group-item-img-hover-list-item"><i class="far fa-eye"></i></div>
+                                <div class="container__product-group-item-img-hover-list-item"><i class="fas fa-shopping-cart add__cart8"></i></div>
+                               <a href=""><div class="container__product-group-item-img-hover-list-item"><i class="far fa-eye"></i></div></a>
                             </div>
                             <button>Advise</button>
                         </div>
@@ -612,14 +637,14 @@
         <!-- blog -->
 
         <div class="container__blog">
-            <div class="container__blog-h1">
-                <div class="container__blog-h1-p">Hoài Linh Blog</div>
+            <div class="container__blog-h1" data-aos="flip-right" data-aos-delay="100" data-aos-duration="1500">
+                <div class="container__blog-h1-p">Hoai Linh Blog</div>
                 <p>catching up on trends, shaping their style</p>
             </div>
 
             <div class="container__blog-group">
 
-               <div class="container__blog-group-list">
+               <div class="container__blog-group-list" data-aos="fade-right" data-aos-delay="100" data-aos-duration="1500">
                    <div class="container__blog-group-list-hover">
                         <a href=""><div class="container__blog-group-list-img"></div></a>
                    </div>
@@ -628,7 +653,7 @@
                    </div>
                </div>
                 <a href="">
-                    <div class="container__blog-group-list">
+                    <div class="container__blog-group-list" data-aos="flip-down" data-aos-delay="100" data-aos-duration="1500">
                         <div class="container__blog-group-list-hover">
                             <a href=""><div class="container__blog-group-list-img container__blog-group-list-img2"></div></a>
                         </div>
@@ -638,7 +663,7 @@
                     </div>
                 </a>
                 <a href="">
-                    <div class="container__blog-group-list">
+                    <div class="container__blog-group-list" data-aos="flip-left" data-aos-delay="100" data-aos-duration="1500">
                         <div class="container__blog-group-list-hover">
                             <a href=""><div class="container__blog-group-list-img container__blog-group-list-img3"></div></a>
                         </div>
@@ -656,7 +681,7 @@
 
     <!-- footer -->
 
-    <div id="footer" class="footer">
+    <div id="footer" class="footer" data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
         <div class="footer__top">
             <div class="footer__top-h1">
                 <div class="footer__top-h1-p">NEWSLETTER SIGN UP</div>
@@ -700,9 +725,9 @@
 
             <div class="footer__tops-group4">
                 <p>Payment methods</p>
-                <img src="/fashion/file/img/footer__banking.png" alt="">
+                <img src="/img/footer__banking.png" alt="">
                 <br>
-                <img class="footer__tóp-group4-img2" src="/fashion/file/img/footer__bell.png" alt="">
+                <img class="footer__tóp-group4-img2" src="/img/footer__bell.png" alt="">
             </div>
            
         </div>
@@ -715,78 +740,14 @@
     </div>
 
         <!-- sale script -->
-        <script type='text/javascript'>
-            //<![CDATA[
-            function getTimeRemaining(endtime) {
-              var t = Date.parse(endtime) - Date.parse(new Date());
-              var seconds = Math.floor((t / 1000) % 60);
-              var minutes = Math.floor((t / 1000 / 60) % 60);
-              var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
-              var days = Math.floor(t / (1000 * 60 * 60 * 24));
-              return {
-                'total': t,
-                'days': days,
-                'hours': hours,
-                'minutes': minutes,
-                'seconds': seconds
-              };
-            }
-            
-            function initializeClock(id, endtime) {
-              var clock = document.getElementById(id);
-              var daysSpan = clock.querySelector('.days');
-              var hoursSpan = clock.querySelector('.hours');
-              var minutesSpan = clock.querySelector('.minutes');
-              var secondsSpan = clock.querySelector('.seconds');
-            
-              function updateClock() {
-                var t = getTimeRemaining(endtime);
-            
-                daysSpan.innerHTML = t.days;
-                hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
-                minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
-                secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
-            
-                if (t.total <= 0) {
-                  clearInterval(timeinterval);
-                }
-              }
-            
-              updateClock();
-              var timeinterval = setInterval(updateClock, 1000);
-            }
-            
-            var deadline = new Date(Date.parse(new Date()) + 19 * 24 * 60 * 60 * 1000);
-            initializeClock('clockdiv', deadline);
-            //]]>
-
-
-            var input_menu = document.getElementById('input_menu');
-            var header = document.getElementById('header');
-            var container__top = document.getElementById('container__top');
-            var products__list = document.getElementById('products__list');
-            var products__lists = document.getElementById('products__lists');
-            var search__list = document.getElementById('search__list');
-            var account__list = document.getElementById('account__list');
-            var footer = document.getElementById('footer');
-            
-            input_menu.onclick = function ()
-                {
-                    header.style.position = 'fixed';
-                    container__top.style.paddingTop = '130px'
-                    products__list.style.top = '80px'
-                    products__lists.style.top = '80px'
-                    search__list.style.top = '80px'
-                    account__list.style.top = '80px'
-                    footer.style.top = '100px'
-                }
-
-            // input_menu.ondblclick = function () {
-            //     header.style.position = 'none';
-            //     // header.style.margin = '60px'
-            //     }
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script>
+            AOS.init();
+        </script>
+        <script type='text/javascript' src="product.js">
             
             </script>
+
      <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
